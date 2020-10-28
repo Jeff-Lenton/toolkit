@@ -3,23 +3,22 @@ LABEL maintainer="Kenna Security"
 
 USER root
 
-RUN useradd kenna
+RUN useradd -g root kenna
 RUN mkdir -p /opt/app/toolkit/
 RUN mkdir -p /opt/app/bundle/bin
-RUN chown -R kenna /opt/app-root/src
-RUN chown -R kenna /opt/app/
+ADD . /opt/app/toolkit/
+RUN chown -R kenna /opt/
 
 # set up gem env
-RUN gem install bundler:2.0.2
 
-# add our files, ensure we can write to output
-ADD . /opt/app/toolkit/
 
 # install deps 
 WORKDIR /opt/app/toolkit/
 USER kenna
+RUN gem install bundler:2.0.2
 RUN bundle install
 
-ENTRYPOINT ["./scripts/entrypoint.sh"]
+VOLUME [ "/opt/app/toolkit/input" ]
+VOLUME [ "/opt/app/toolkit/output" ]
 
-CMD ["help"]
+ENTRYPOINT ["./scripts/entrypoint.sh"]`
