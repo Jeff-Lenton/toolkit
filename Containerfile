@@ -1,5 +1,5 @@
 FROM quay.io/kennasecurity/ruby:2.6.3-ubi
-LABEL maintainer="Kenna Security"
+LABEL maintainer="Kenna Security" 
 
 # Setup The Enviroment. 
 RUN mkdir -p /opt/app/toolkit/
