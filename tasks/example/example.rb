@@ -13,7 +13,7 @@ module Kenna
               type: "string",
               required: false,
               default: "just an example",
-              description: "This is an example option. Set it to whatever you want and we'll print it"
+              description: "This is an example option. Set it to whatever you want and we'll print it - yay!"
             }
           ]
         }
